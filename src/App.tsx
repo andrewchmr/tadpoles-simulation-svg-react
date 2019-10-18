@@ -28,11 +28,11 @@ class App extends React.Component<{}, AppState> {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         setInterval(() => this.update(), 20);
     }
 
-    update(){
+    update() {
         let dx = this.state.vx;
         let dy = this.state.vy;
         let x = this.state.px[0] += dx;
@@ -42,8 +42,12 @@ class App extends React.Component<{}, AppState> {
         const k1 = -5 - speed / 3;
 
         // Bounce off the walls.
-        if (x < 0 || x > width) {this.setState({vx: -1* this.state.vx})}
-        if (y < 0 || y > height) {this.setState({vy: -1*this.state.vy})}
+        if (x < 0 || x > width) {
+            this.setState({vx: -1 * this.state.vx})
+        }
+        if (y < 0 || y > height) {
+            this.setState({vy: -1 * this.state.vy})
+        }
 
         // Swim!
         for (let j = 1; j < m; ++j) {
@@ -58,21 +62,26 @@ class App extends React.Component<{}, AppState> {
         }
     }
 
-    render() {
-
-        const lines = [];
-        for(let i = 1; i < m; ++i){
-            lines.push(<line strokeWidth={2} stroke={"white"} x1={this.state.px[i-1]} y1={this.state.py[i-1]} x2={this.state.px[i]} y2={this.state.py[i]}/>)
+    getLinePath(px: number[], py: number[]): string {
+        const firstPoint = `M${px[0]},${py[0]}`;
+        let buffer = ``;
+        for (let i = 1; i < px.length; i++) {
+            buffer += `L${px[i]},${py[i]}`;
         }
+        return `${firstPoint}${buffer}`;
+    }
+
+    render() {
+        const tailPx = this.state.px.slice(0, 3);
+        const tailPy = this.state.py.slice(0, 3);
+        const rotationEllipse = `${Math.atan2(this.state.vy, this.state.vx) * (180 / Math.PI)}, ${this.state.px[0]}, ${this.state.py[0]}`;
 
         return <svg width={width} height={height}>
-            <ellipse transform={`rotate(${Math.atan2(this.state.vy, this.state.vx) * (180 / Math.PI)}, ${this.state.px[0]}, ${this.state.py[0]})`} cx={this.state.px[0]} cy={this.state.py[0]} rx={Math.PI*2} ry={4} fill={"white"}/>
-            <line  stroke-linecap="round" strokeWidth={4} stroke={"white"} x1={this.state.px[0]} y1={this.state.py[0]} x2={this.state.px[1]} y2={this.state.py[1]}/>
-            <line strokeWidth={4} stroke={"white"} x1={this.state.px[1]} y1={this.state.py[1]} x2={this.state.px[2]} y2={this.state.py[2]}/>
-            <line  stroke-linecap="round" strokeWidth={4} stroke={"white"} x1={this.state.px[2]} y1={this.state.py[2]} x2={this.state.px[3]} y2={this.state.py[3]}/>
-
-            <line stroke={"white"} x1={this.state.px[0]} y1={this.state.py[0]} x2={this.state.px[1]} y2={this.state.py[1]}/>
-            {lines}
+            <path strokeLinecap="round" d={this.getLinePath(this.state.px, this.state.py)} stroke={"white"}/>
+            <ellipse
+                transform={`rotate(${rotationEllipse})`}
+                cx={this.state.px[0]} cy={this.state.py[0]} rx={Math.PI * 2} ry={4} fill={"white"}/>
+            <path strokeWidth={3} strokeLinecap="round" d={this.getLinePath(tailPx, tailPy)} stroke={"white"}/>
         </svg>
     }
 }
