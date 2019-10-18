@@ -11,8 +11,8 @@ interface AppState {
 
 const v = 2;
 const m = 12;
-const width = window.innerWidth/5;
-const height = window.innerHeight/5;
+const width = window.innerWidth / 5;
+const height = window.innerHeight / 5;
 
 class App extends React.Component<{}, AppState> {
 
@@ -20,8 +20,8 @@ class App extends React.Component<{}, AppState> {
         super(props);
 
         this.state = {
-            vx: (Math.random() - 0.5) * v,
-            vy: (Math.random() - 0.5) * v,
+            vx: 0.3 * v,
+            vy: 0.3 * v,
             px: new Array(m).fill(Math.random() * width),
             py: new Array(m).fill(Math.random() * height),
             count: 0
@@ -29,6 +29,8 @@ class App extends React.Component<{}, AppState> {
     }
 
     componentDidMount() {
+        console.log(this.state.vx);
+        console.log(this.state.vy)
         setInterval(() => this.update(), 20);
     }
 
