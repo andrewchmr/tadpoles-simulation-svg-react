@@ -11,8 +11,8 @@ interface AppState {
 
 const v = 2;
 const m = 12;
-const width = window.innerWidth;
-const height = window.innerHeight;
+const width = window.innerWidth/5;
+const height = window.innerHeight/5;
 
 class App extends React.Component<{}, AppState> {
 
@@ -76,7 +76,7 @@ class App extends React.Component<{}, AppState> {
         const tailPy = this.state.py.slice(0, 3);
         const rotationEllipse = `${Math.atan2(this.state.vy, this.state.vx) * (180 / Math.PI)}, ${this.state.px[0]}, ${this.state.py[0]}`;
 
-        return <svg width={width} height={height}>
+        return <svg viewBox={`0 0 ${width} ${height}`}>
             <path strokeLinecap="round" d={this.getLinePath(this.state.px, this.state.py)} stroke={"white"}/>
             <ellipse
                 transform={`rotate(${rotationEllipse})`}
