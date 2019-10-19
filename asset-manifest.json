@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/tadpoles-simulation-svg-react/static/css/main.245598d8.chunk.css",
+    "main.js": "/tadpoles-simulation-svg-react/static/js/main.337950be.chunk.js",
+    "main.js.map": "/tadpoles-simulation-svg-react/static/js/main.337950be.chunk.js.map",
+    "runtime-main.js": "/tadpoles-simulation-svg-react/static/js/runtime-main.5a00e4c3.js",
+    "runtime-main.js.map": "/tadpoles-simulation-svg-react/static/js/runtime-main.5a00e4c3.js.map",
+    "static/js/2.01ea9dea.chunk.js": "/tadpoles-simulation-svg-react/static/js/2.01ea9dea.chunk.js",
+    "static/js/2.01ea9dea.chunk.js.map": "/tadpoles-simulation-svg-react/static/js/2.01ea9dea.chunk.js.map",
+    "index.html": "/tadpoles-simulation-svg-react/index.html",
+    "precache-manifest.db4df9c78abb5fcf2d5fb78131a97dd3.js": "/tadpoles-simulation-svg-react/precache-manifest.db4df9c78abb5fcf2d5fb78131a97dd3.js",
+    "service-worker.js": "/tadpoles-simulation-svg-react/service-worker.js",
+    "static/css/main.245598d8.chunk.css.map": "/tadpoles-simulation-svg-react/static/css/main.245598d8.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5a00e4c3.js",
+    "static/js/2.01ea9dea.chunk.js",
+    "static/css/main.245598d8.chunk.css",
+    "static/js/main.337950be.chunk.js"
+  ]
+}
