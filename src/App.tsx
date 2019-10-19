@@ -29,16 +29,18 @@ class App extends React.Component<{}, AppState> {
     }
 
     componentDidMount() {
-        console.log(this.state.vx);
-        console.log(this.state.vy)
         setInterval(() => this.update(), 20);
     }
 
     update() {
+        // TODO: Cleanup code
+        const px = this.state.px;
+        const py = this.state.py;
+
         let dx = this.state.vx;
         let dy = this.state.vy;
-        let x = this.state.px[0] += dx;
-        let y = this.state.py[0] += dy;
+        let x = px[0] += dx;
+        let y = py[0] += dy;
         let speed = Math.sqrt(dx * dx + dy * dy);
         const countNew = speed * 10;
         const k1 = -5 - speed / 3;
@@ -53,14 +55,14 @@ class App extends React.Component<{}, AppState> {
 
         // Swim!
         for (let j = 1; j < m; ++j) {
-            const vx = x - this.state.px[j];
-            const vy = y - this.state.py[j];
+            const vx = x - px[j];
+            const vy = y - py[j];
             this.setState({count: this.state.count + countNew});
             const k2 = Math.sin(((this.state.count) + j * 3) / 300) / speed;
-            this.state.px[j] = (x += dx / speed * k1) - dy * k2;
-            this.state.py[j] = (y += dy / speed * k1) + dx * k2;
+            px[j] = (x += dx / speed * k1) - dy * k2;
+            py[j] = (y += dy / speed * k1) + dx * k2;
             speed = Math.sqrt((dx = vx) * dx + (dy = vy) * dy);
-            this.setState({px: this.state.px, py: this.state.py})
+            this.setState({px: px, py: py})
         }
     }
 
