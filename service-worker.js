@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/tadpoles-simulation-svg-react/precache-manifest.db4df9c78abb5fcf2d5fb78131a97dd3.js"
+  "/tadpoles-simulation-svg-react/precache-manifest.70bb69f71e3e015738730d76be832512.js"
 );
 
 self.addEventListener('message', (event) => {
