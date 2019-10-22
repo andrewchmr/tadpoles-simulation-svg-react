@@ -2,6 +2,8 @@ Simulating tadpoles behaviour in Typescript using React and SVG.
 
 Demo: https://andrewchmr.github.io/tadpoles-simulation-svg-react/
 
+![alt text](https://github.com/andrewchmr/tadpoles-simulation-svg-react/blob/master/Tadpole.png?raw=true)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
